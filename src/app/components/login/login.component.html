@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title style="font-size: 20px">Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <mat-form-field>
+          <input matInput type="email" placeholder="E-Mail" formControlName="email" required>
+        </mat-form-field>
+      </div>
+      <div class="form-group row">
+        <mat-form-field>
+          <input matInput type="password" placeholder="Mot de passe" class="form-control" formControlName="password" required>
+        </mat-form-field>
+        <label class="error">{{errorMessage}}</label>
+        <label class="success">{{successMessage}}</label>
+      </div>
+      <div class="row">
+        <button mat-raised-button color="primary" type="submit" (click)="tryLogin(loginForm.value)">Login</button>
+      </div>
+      <div class="row">
+        <button type="button" color="warn" mat-raised-button (click)="tryGoogleLogin()">Login with Google</button>
+      </div>
+    </form>
+    <div class="row">
+      <div>
+        <p>No account yet? <a href="/register">Create an account</a></p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

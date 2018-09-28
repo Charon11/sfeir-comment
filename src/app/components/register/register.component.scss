@@ -1,0 +1,43 @@
+.header{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.row{
+  margin-top: 10px;
+}
+
+.error{
+  color: red;
+}
+
+.success{
+  color: green;
+}
+
+mat-card-title {
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+mat-card {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}

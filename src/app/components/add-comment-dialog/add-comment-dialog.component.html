@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Ajouter un commentaire</h2>
+<mat-dialog-content>
+  <form [formGroup]="addCommentForm">
+    <div class="form-group row">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Titre" class="form-control" formControlName="title" required>
+      </mat-form-field>
+    </div>
+    <div class="form-group row">
+      <mat-form-field>
+        <textarea matInput placeholder="Contenu" class="form-control" formControlName="content" required></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions  align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-raised-button color="primary" type="submit" (click)="addComment()" [disabled]="!addCommentForm.valid">Ajouter</button>
+</mat-dialog-actions>

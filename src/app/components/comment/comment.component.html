@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar
+         [style.height]="'50px'"
+         [style.width]="'50px'"
+         [style.background-image]="photoUrl"
+         [style.background-position]="'center'"
+         [style.background-size]="'cover'"></div>
+    <mat-card-title class="comment-title">{{comment.title}}</mat-card-title>
+    <mat-card-subtitle >{{comment.userName}} : {{comment.editedDate.seconds * 1000 | date:'dd/MM/yyyy - HH:mm:ss'}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{comment.content}}
+  </mat-card-content>
+  <mat-card-actions align="end" *ngIf="isCurrentUser()">
+    <button mat-button color="warn" type="submit" (click)="deleteComment()">Supprimer</button>
+    <button mat-button type="submit" (click)="editComment()">Modifier</button>
+  </mat-card-actions>
+</mat-card>

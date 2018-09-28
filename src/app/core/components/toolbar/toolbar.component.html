@@ -1,0 +1,16 @@
+<mat-toolbar role="header" id="toolbar" color="primary" layout="row" layout-sm="column" layout-align="end center"
+             layout-wrap>
+  <a id="title" mat-button [routerLink]="['/comments']">Sfeir Comment</a>
+  <span class="fill-remaining-space"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="connected">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/user']">
+      <span>User</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

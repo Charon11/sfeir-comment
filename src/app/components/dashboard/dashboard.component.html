@@ -1,0 +1,3 @@
+<div id="dashboard" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+  <app-comment *ngFor="let comment of comments | async" [comment]="comment"></app-comment>
+</div>

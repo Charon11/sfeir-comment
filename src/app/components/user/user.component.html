@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar
+         [style.height]="'85px'"
+         [style.width]="'85px'"
+         [style.background-image]="photoUrl"
+         [style.background-position]="'center'"
+         [style.background-size]="'cover'"></div>
+    <mat-card-title style="font-size: 20px">{{user.name ? user.name : "User"}}</mat-card-title>
+    <mat-card-subtitle style="font-size: 20px">{{user.provider}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form [formGroup]="profileForm">
+      <div *ngIf='user.provider == "password"'>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Nom" formControlName="name" required>
+        </mat-form-field>
+      </div>
+      <div class="row" *ngIf='user.provider == "password"'>
+        <button type="button" mat-raised-button (click)="save(profileForm.value)">Sauvegarder</button>
+      </div>
+    </form>
+    <div class="logout">
+      <div class="row logout">
+        <button type="button" color="warn" mat-raised-button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

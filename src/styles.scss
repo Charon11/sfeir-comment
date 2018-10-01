@@ -3,8 +3,12 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   background: #ececec;
+}
+
+.fonts-loaded body {
+  font-family: 'Roboto', sans-serif;
 }
 .mat-card {
   overflow:hidden;

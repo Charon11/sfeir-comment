@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Location} from '@angular/common';
 import * as firebase from 'firebase';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -17,8 +16,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
-    private _router: Router,
-    private location: Location
+    private _router: Router
     ) {
     this._router.events.subscribe(() => {
       this.connected = !!firebase.auth().currentUser;

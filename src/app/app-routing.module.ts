@@ -8,11 +8,11 @@ import { UserResolver } from './components/user/user.resolver';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {AuthGuard} from './core/auth.guard';
 const routes: Routes = [
-  { path: '', redirectTo: 'user', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [LoginGuard] },
   { path: 'comments', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}}
+  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},
+  { path: '', redirectTo: 'user', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [

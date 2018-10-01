@@ -13,7 +13,7 @@ export class AuthService {
       provider.addScope('profile');
       provider.addScope('email');
       this.afAuth.auth
-        .signInWithPopup(provider)
+        .signInWithRedirect(provider)
         .then(res => {
           resolve(res);
         });

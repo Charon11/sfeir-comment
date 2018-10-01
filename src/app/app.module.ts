@@ -6,6 +6,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RegisterComponent} from './components/register/register.component';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+
 
 import {
   MatAutocompleteModule,
@@ -76,7 +78,12 @@ import { EditCommentDialogComponent } from './components/edit-comment-dialog/edi
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase, null,
+      {
+        toastMessageOnAuthSuccess: false,
+        toastMessageOnAuthError: true
+      }),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,

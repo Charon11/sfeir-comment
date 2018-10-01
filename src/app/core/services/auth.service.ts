@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth,
+              private router: Router) {
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        this.router.navigate(['/login']);
+      }
+    });
+  }
 
   doGoogleLogin() {
     return new Promise<any>((resolve, reject) => {

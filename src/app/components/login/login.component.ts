@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthProvider, Theme} from 'ngx-auth-firebaseui';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  themes = Theme;
   loginForm: FormGroup;
   errorMessage = '';
   successMessage = '';
@@ -20,6 +22,14 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.createForm();
+  }
+
+  loginSuccess() {
+    this.router.navigate(['/comments']);
+  }
+
+  printError(event) {
+    console.error(event);
   }
 
   createForm() {

@@ -6,11 +6,11 @@
 export const environment = {
   production: false,
   firebase : {
-    apiKey: 'AIzaSyAWX74AZYVF9uyIu7MEuHba-r2LxNQkjyY',
-    authDomain: 'sfeir-comment.firebaseapp.com',
-    databaseURL: 'https://sfeir-comment.firebaseio.com',
-    projectId: 'sfeir-comment',
-    storageBucket: 'sfeir-comment.appspot.com',
-    messagingSenderId: '789105442589'
+    apiKey: 'AIzaSyDhSht6oGbR7At7i2bmqBROykIyGLhxHAQ',
+    authDomain: 'test-comment-2acc0.firebaseapp.com',
+    databaseURL: 'https://test-comment-2acc0.firebaseio.com',
+    projectId: 'test-comment-2acc0',
+    storageBucket: 'test-comment-2acc0.appspot.com',
+    messagingSenderId: '456182120264'
   }
 };

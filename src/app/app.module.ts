@@ -109,7 +109,8 @@ import { EditCommentDialogComponent } from './components/edit-comment-dialog/edi
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [AddCommentDialogComponent, EditCommentDialogComponent],
   providers: [AuthService, CommentService, UserService, UserResolver, LoginGuard, AuthGuard, AngularFirestore],

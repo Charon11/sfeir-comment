@@ -29,6 +29,8 @@
     "@angular/service-worker": "^6.1.9",
     "core-js": "^2.5.4",
     "firebase": "^5.5.2",
+    "firebaseui": "^3.4.1",
+    "firebaseui-angular": "^3.3.2",
     "material": "^0.3.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

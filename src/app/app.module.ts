@@ -59,6 +59,21 @@ import { AddCommentDialogComponent } from './components/add-comment-dialog/add-c
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { EditCommentDialogComponent } from './components/edit-comment-dialog/edit-comment-dialog.component';
 
+import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
+
+
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  signInFlow: 'popup',
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    {
+      requireDisplayName: false,
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+    },
+  ],
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +92,7 @@ import { EditCommentDialogComponent } from './components/edit-comment-dialog/edi
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,

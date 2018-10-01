@@ -4,10 +4,12 @@ node_js:
 branches:
   only:
   - master
+before_script:
+- npm install -g firebase-tools
 script:
 - npm run build --prod --aot
-deploy:
-  provider: firebase
-  token:
+after_success:
+- firebase deploy --token "$FIREBASE_TOKEN"
+env:
+  global:
     secure: ChgqHq2+kbR9yljpWq/j8QL2QUPcKOewyD5eIss6U8b1PFOSUODhMv/Hs4OgOYBbSnDMzDA7bC1F4HCBht7QPBwRnWCVPc4tWZdNl/Pgk8hPlBlWeeOvgBCECTufuZ8GtEEtQV/Z5r6mHQyNrvyIRlr/zsMlghGstXYcXLilSkFuqjh/w0n/IgIjmM+2QqhGDQv89lphBiVGwuWbh5CyM0YwOB49XDy5lqJaGGVwOFiF473eq2ZJTYp6eEhHSHwd4VmJq9p065K9GDDivParHDIJggVvjlmTDsYe6RUde9BLMY6X+v2eRwR3KCNdrtHTgYKFHQSBd0dVAamSa4/RoU4zsPQAuKtXVT3SLKzumFV4TWVdHMUK4HafT4+/pshHn/Vy0sNaoZb7DkUkZ0HNd4VA2EboWlSnfrglcSk6iWn/XucWSRdWU2BLQKlFAI2PdfOb1XJf1vOGVryE0siJzr8namVjCDS1kmG0HZOo+p6aKPJMSOpUrUO3DsXLjf+cf4JvX0ElS10hYCyY11rBxLKSjFp6wWYuQiuNnc01VkPYcIXNZhOcyZstE3yDiCawtsLsB1wUXyGcont+7kX9yavItyw8IFSlQIqhKSiXM9ctdfKNQq4jhtsgzhXTI8BQvFS51Cgexbru3EGt2/BGPsJ0RSwEII7NnIUh0dmJcng=
-

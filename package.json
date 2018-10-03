@@ -4,8 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --stats-json",
     "dist": "ng build --prod",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -29,6 +30,8 @@
     "@angular/service-worker": "^6.1.9",
     "core-js": "^2.5.4",
     "firebase": "^5.5.2",
+    "firebaseui": "^3.4.1",
+    "firebaseui-angular": "^3.3.2",
     "material": "^0.3.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
@@ -52,6 +55,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "webpack-bundle-analyzer": "^3.0.2"
   }
 }

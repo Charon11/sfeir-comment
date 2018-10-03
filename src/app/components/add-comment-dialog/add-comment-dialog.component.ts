@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../core/services/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment} from '../../shared/comment.model';

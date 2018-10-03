@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +10,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  errorMessage = '';
-  successMessage = '';
+
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    public afAuth: AngularFireAuth
   ) {
-    this.createForm();
-  }
-
-  createForm() {
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required ],
-      password: ['', Validators.required]
-    });
+    this.afAuth.authState.subscribe(user =>
+      this.router.navigate(['/comments']),
+      err =>
+        console.log(err.message)
+    );
   }
 
   ngOnInit() {
@@ -39,13 +34,5 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  tryLogin(value) {
-    this.authService.doLogin(value)
-      .then(res => {
-        this.router.navigate(['/comments']);
-      }, err => {
-        console.log(err);
-        this.errorMessage = err.message;
-      });
-  }
+
 }

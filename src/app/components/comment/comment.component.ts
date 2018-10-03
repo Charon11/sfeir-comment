@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../../shared/comment.model';
 import {DomSanitizer} from '@angular/platform-browser';
 import * as firebase from 'firebase';
-import {MatSnackBar} from '@angular/material';
-import {MatDialog} from '@angular/material';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 import {CommentService} from '../../core/services/comment.service';
 import {EditCommentDialogComponent} from '../edit-comment-dialog/edit-comment-dialog.component';
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {SwUpdate} from '@angular/service-worker';
-import {MatDialog} from '@angular/material';
+import {MatDialog} from '@angular/material/dialog';
 import {AddCommentDialogComponent} from './components/add-comment-dialog/add-comment-dialog.component';
 import {Router} from '@angular/router';
 import * as firebase from 'firebase';

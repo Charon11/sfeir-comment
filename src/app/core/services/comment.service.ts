@@ -3,7 +3,6 @@ import {Comment} from '../../shared/comment.model';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {DocumentChangeType} from '@angular/fire/firestore/interfaces';
 
 @Injectable()
 export class CommentService {
@@ -15,14 +14,15 @@ export class CommentService {
   }
 
   get comments(): Observable<Array<Comment>> {
-    return this._comments.snapshotChanges().pipe(
+    /*return this._comments.snapshotChanges().pipe(
       mapComments
-    );
-    // return this._comments.valueChanges();
+    );*/
+    return this._comments.valueChanges();
   }
 
   public addComment(c: Comment) {
-    return this._comments.add(c);
+    c.id = this._fbDataBase.createId();
+    return this.saveComment(c);
   }
 
   public saveComment(c: Comment) {

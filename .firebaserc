@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "sfeir-comment"
+  },
+  "targets": {
+    "sfeir-comment": {
+      "hosting": {
+        "sfeir-comment": [
+          "sfeir-comment"
+        ]
+      }
+    }
   }
 }

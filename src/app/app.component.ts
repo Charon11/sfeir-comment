@@ -22,9 +22,6 @@ export class AppComponent implements OnInit {
     private _router: Router,
     private dialog: MatDialog) {
     this._fbDataBase.firestore.enablePersistence().then();
-    this._fbDataBase.firestore.settings({
-      timestampsInSnapshots: true
-    });
     this._router.events.subscribe(() => {
       this._connected = !!firebase.auth().currentUser;
     });

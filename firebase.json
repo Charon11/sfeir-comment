@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "sfeir-comment",
     "public": "dist",
     "ignore": [
       "firebase.json",

@@ -5,7 +5,6 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RegisterComponent} from './components/register/register.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,17 +18,13 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {LoginComponent} from './components/login/login.component';
-import {LoginGuard} from './core/login.guard';
 import {UserService} from './core/services/user.service';
 import {AuthService} from './core/services/auth.service';
-import {UserComponent} from './components/user/user.component';
-import {UserResolver} from './components/user/user.resolver';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {ToolbarComponent} from './core/components/toolbar/toolbar.component';
 import {CommentComponent} from './components/comment/comment.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {CommentService} from './core/services/comment.service';
-import {AuthGuard} from './core/auth.guard';
 import { AddCommentDialogComponent } from './components/add-comment-dialog/add-comment-dialog.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { EditCommentDialogComponent } from './components/edit-comment-dialog/edit-comment-dialog.component';
@@ -37,6 +32,7 @@ import { EditCommentDialogComponent } from './components/edit-comment-dialog/edi
 import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -56,9 +52,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     LoginComponent,
-    UserComponent,
     ToolbarComponent,
     CommentComponent,
     DashboardComponent,
@@ -74,6 +68,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireAuthGuardModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
@@ -87,7 +82,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [AddCommentDialogComponent, EditCommentDialogComponent],
-  providers: [AuthService, CommentService, UserService, UserResolver, LoginGuard, AuthGuard, AngularFirestore],
+  providers: [AuthService, CommentService, UserService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {

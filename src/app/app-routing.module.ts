@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
-import { RegisterComponent } from './components/register/register.component';
-import { UserComponent } from './components/user/user.component';
+import { RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { LoginGuard } from './core/login.guard';
-import { UserResolver } from './components/user/user.resolver';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {AuthGuard} from './core/auth.guard';
+import {canActivate, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [LoginGuard] },
-  { path: 'comments', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},
-  { path: '', redirectTo: 'user', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInTo(['comments'])) },
+  { path: 'comments', component: DashboardComponent, ...canActivate(redirectUnauthorizedTo(['login'])) },
+  { path: '', redirectTo: 'comments', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [

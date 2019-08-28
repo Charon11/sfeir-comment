@@ -33,11 +33,3 @@ export class CommentService {
     return this._comments.doc(id).delete();
   }
 }
-
-export const mapComments = map((actions: any[]) => {
-  return actions.map( action => {
-    const data = action.payload.doc.data() as Comment;
-    const id = action.payload.doc.id;
-    return { id, ...data };
-  });
-});

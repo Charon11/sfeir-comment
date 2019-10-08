@@ -4,7 +4,7 @@ import {SwUpdate} from '@angular/service-worker';
 import {MatDialog} from '@angular/material/dialog';
 import {AddCommentDialogComponent} from './components/add-comment-dialog/add-comment-dialog.component';
 import {Router} from '@angular/router';
-import * as firebase from 'firebase';
+import {AuthService} from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +14,13 @@ import * as firebase from 'firebase';
 export class AppComponent implements OnInit {
 
 
-  private _connected = false;
-
   constructor(
     private _fbDataBase: AngularFirestore,
     private swUpdate: SwUpdate,
     private _router: Router,
-    private dialog: MatDialog) {
-    this._fbDataBase.firestore.enablePersistence().then();
-    this._router.events.subscribe(() => {
-      this._connected = !!firebase.auth().currentUser;
-    });
+    private dialog: MatDialog,
+    public authService: AuthService) {
+    this._fbDataBase.firestore.enablePersistence({synchronizeTabs: true}).then();
   }
 
   title = 'sfeir-comment';
@@ -34,10 +30,6 @@ export class AppComponent implements OnInit {
       width: '90%',
     });
 
-  }
-
-  public get connected() {
-    return this._connected;
   }
 
   ngOnInit(): void {
@@ -51,6 +43,10 @@ export class AppComponent implements OnInit {
         }
       });
     }
+  }
+
+  get currentUser() {
+    return this.authService.currentUser;
   }
 
 }

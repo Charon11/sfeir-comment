@@ -18,7 +18,6 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {LoginComponent} from './components/login/login.component';
-import {UserService} from './core/services/user.service';
 import {AuthService} from './core/services/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {ToolbarComponent} from './core/components/toolbar/toolbar.component';
@@ -78,11 +77,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatIconModule,
     MatInputModule,
     MatSnackBarModule,
-    FlexLayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    FlexLayoutModule
   ],
   entryComponents: [AddCommentDialogComponent, EditCommentDialogComponent],
-  providers: [AuthService, CommentService, UserService, AngularFirestore],
+  providers: [AuthService, CommentService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {

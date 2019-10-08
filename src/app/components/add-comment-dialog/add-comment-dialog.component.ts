@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
-import {UserService} from '../../core/services/user.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment} from '../../shared/comment.model';
-import * as firebase from 'firebase';
 import {CommentService} from '../../core/services/comment.service';
-import Timestamp = firebase.firestore.Timestamp;
+import {firestore} from 'firebase';
+import Timestamp = firestore.Timestamp;
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-add-comment-dialog',
@@ -17,9 +17,9 @@ export class AddCommentDialogComponent implements OnInit {
   private _addCommentForm: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<AddCommentDialogComponent>,
-              private userService: UserService,
               private commentService: CommentService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private authService: AuthService) {
     this.createForm();
   }
 
@@ -34,11 +34,12 @@ export class AddCommentDialogComponent implements OnInit {
   }
 
   addComment() {
+    const currentUser = this.authService.currentUser;
     const comment: Comment = {
       ...this._addCommentForm.value,
-      userName: firebase.auth().currentUser.displayName,
-      userImageUrl: firebase.auth().currentUser.photoURL,
-      userId: firebase.auth().currentUser.providerData[0].uid,
+      userName: currentUser.displayName,
+      userImageUrl: currentUser.photoURL,
+      userId: currentUser.uid,
       editedDate: Timestamp.now()
     };
     this.commentService.addComment(comment).then((res) => {

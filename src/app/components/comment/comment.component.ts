@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../../shared/comment.model';
 import {DomSanitizer} from '@angular/platform-browser';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {CommentService} from '../../core/services/comment.service';
 import {EditCommentDialogComponent} from '../edit-comment-dialog/edit-comment-dialog.component';
+import {AuthService} from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-comment',
@@ -19,13 +20,14 @@ export class CommentComponent implements OnInit {
   constructor(private _sanitizer: DomSanitizer,
               private commentService: CommentService,
               private _snackBar: MatSnackBar,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   public isCurrentUser(): boolean {
-    return this.comment.userId === firebase.auth().currentUser.providerData[0].uid;
+    return this.authService.currentUser && this.comment.userId === this.authService.currentUser.uid;
   }
 
   public get snackbar() {

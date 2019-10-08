@@ -4,7 +4,7 @@
   <router-outlet></router-outlet>
 </main>
 
-<div class="floaty" *ngIf="connected">
+<div class="floaty" *ngIf="currentUser">
   <div class="floaty-btn">
     <button mat-fab="" (click)="openDialog()"><mat-icon>add</mat-icon></button>
   </div>

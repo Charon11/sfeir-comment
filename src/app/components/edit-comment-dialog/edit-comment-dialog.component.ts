@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Comment} from '../../shared/comment.model';
-import * as firebase from 'firebase';
-import Timestamp = firebase.firestore.Timestamp;
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommentService} from '../../core/services/comment.service';
+import {firestore} from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-edit-comment-dialog',

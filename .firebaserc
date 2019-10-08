@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "sfeir-comment"
+    "default": "sfeir-comment",
+    "staging": "test-comment-2acc0"
   },
   "targets": {
     "sfeir-comment": {

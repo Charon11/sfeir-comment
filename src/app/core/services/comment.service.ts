@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Comment} from '../../shared/comment.model';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class CommentService {
@@ -14,9 +13,6 @@ export class CommentService {
   }
 
   get comments(): Observable<Array<Comment>> {
-    /*return this._comments.snapshotChanges().pipe(
-      mapComments
-    );*/
     return this._comments.valueChanges();
   }
 

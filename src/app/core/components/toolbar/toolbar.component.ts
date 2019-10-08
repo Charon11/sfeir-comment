@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import * as firebase from 'firebase';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -11,16 +10,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
 
-  connected = false;
 
   constructor(
     public authService: AuthService,
     private route: ActivatedRoute,
     private _router: Router
     ) {
-    this._router.events.subscribe(() => {
-      this.connected = !!firebase.auth().currentUser;
-    });
   }
 
   ngOnInit() {
@@ -29,14 +24,14 @@ export class ToolbarComponent implements OnInit {
   logout() {
     this.authService.doLogout()
       .then(() => {
-        this.router.navigate(['/login']);
+        this._router.navigate(['/login']);
       }, (error) => {
         console.log('Logout error', error);
       });
   }
 
-  public get router() {
-    return this._router;
+  get currentUser() {
+    return this.authService.currentUser;
   }
 
 }

@@ -1,5 +1,6 @@
-import * as firebase from 'firebase';
-import Timestamp = firebase.firestore.Timestamp;
+import {firestore} from 'firebase';
+import Timestamp = firestore.Timestamp;
+
 
 export interface Comment {
   id?: string;

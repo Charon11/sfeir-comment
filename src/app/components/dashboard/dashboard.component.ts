@@ -10,13 +10,13 @@ import {CommentService} from '../../core/services/comment.service';
 })
 export class DashboardComponent implements OnInit {
 
-  private readonly _comments: Observable<Array<Comment>>;
+  private _comments: Observable<Array<Comment>>;
 
   constructor(private _commentService: CommentService) {
-    this._comments = this._commentService.comments;
   }
 
   ngOnInit() {
+    this._comments = this._commentService.comments;
   }
 
   public get comments(): Observable<Array<Comment>> {
